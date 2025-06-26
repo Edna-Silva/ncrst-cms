@@ -5,33 +5,33 @@ services:
     build:
       context: .
       dockerfile: .docker/backend/Dockerfile
-    container_name: whimsical_backend
+    container_name: website_backend
     volumes:
-      - ./whimsical-website-backend:/var/www/html
+      - ./website-backend:/var/www/html
     depends_on:
       - db
     networks:
-      - whimsical_net
+      - ncrst_net
     environment:
-      DATABASE_URL: "mysql://symfony:symfony@db:3306/whimsical"
+      DATABASE_URL: "mysql://symfony:symfony@db:3306/ncrst"
 
   db:
     image: mysql:8.0
-    container_name: whimsical_db
+    container_name: ncrst_db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: whimsical
+      MYSQL_DATABASE: ncrst
       MYSQL_USER: symfony
       MYSQL_PASSWORD: symfony
     volumes:
-      - whimsical_mysql_data:/var/lib/mysql
+      - ncrst_mysql_data:/var/lib/mysql
     networks:
-      - whimsical_net
+      - ncrst_net
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: whimsical_phpmyadmin
+    container_name: ncrst_phpmyadmin
     restart: always
     ports:
       - "8080:80"
@@ -42,10 +42,10 @@ services:
     depends_on:
       - db
     networks:
-      - whimsical_net
+      - ncrst_net
 
 networks:
-  whimsical_net:
+  ncrst_net:
 
 volumes:
-  whimsical_mysql_data:
+  ncrst_mysql_data:
