@@ -1,0 +1,51 @@
+
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: .docker/backend/Dockerfile
+    container_name: website_backend
+    volumes:
+      - ./website-backend:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - ncrst_net
+    environment:
+      DATABASE_URL: "mysql://symfony:symfony@db:3306/ncrst"
+
+  db:
+    image: mysql:8.0
+    container_name: ncrst_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ncrst
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - ncrst_mysql_data:/var/lib/mysql
+    networks:
+      - ncrst_net
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ncrst_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: symfony
+      PMA_PASSWORD: symfony
+    depends_on:
+      - db
+    networks:
+      - ncrst_net
+
+networks:
+  ncrst_net:
+
+volumes:
+  ncrst_mysql_data:
