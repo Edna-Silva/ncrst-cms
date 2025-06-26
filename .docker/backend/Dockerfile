@@ -20,7 +20,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy existing app
-COPY ./whimsical-website-backend /var/www/html
+COPY ./website-backend /var/www/html
 
 # Install PHP dependencies
 RUN composer install
