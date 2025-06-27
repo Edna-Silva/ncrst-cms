@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\NewsArticlesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=NewsArticlesRepository::class)
+ * normalizationContext={"groups"={"news-articles:read"}},
+ * denormalizationContext={"groups"={"news-articles:write"}}
  */
 class NewsArticles
 {

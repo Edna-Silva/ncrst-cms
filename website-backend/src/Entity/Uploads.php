@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\UploadsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UploadsRepository::class)
+ * normalizationContext={"groups"={"uploads:read"}},
+ * denormalizationContext={"groups"={"uploads:write"}}
  */
 class Uploads
 {

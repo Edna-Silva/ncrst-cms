@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ResearchPermitsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ResearchPermitsRepository::class)
+ * normalizationContext={"groups"={"research-permits:read"}},
+ * denormalizationContext={"groups"={"research-permits:write"}}
  */
 class ResearchPermits
 {

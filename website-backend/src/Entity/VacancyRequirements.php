@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\VacancyRequirementsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=VacancyRequirementsRepository::class)
+ * normalizationContext={"groups"={"vacancy-requirements:read"}},
+ * denormalizationContext={"groups"={"vacancy-requirements:write"}}
  */
 class VacancyRequirements
 {

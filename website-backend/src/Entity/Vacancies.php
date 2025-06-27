@@ -6,9 +6,13 @@ use App\Repository\VacanciesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=VacanciesRepository::class)
+ * normalizationContext={"groups"={"vacancies:read"}},
+ * denormalizationContext={"groups"={"vacancies:write"}}
+
  */
 class Vacancies
 {

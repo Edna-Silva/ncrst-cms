@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\InnovatorsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InnovatorsRepository::class)
+ * normalizationContext={"groups"={"innovators:read"}},
+ * denormalizationContext={"groups"={"innovators:write"}}
  */
 class Innovators
 {

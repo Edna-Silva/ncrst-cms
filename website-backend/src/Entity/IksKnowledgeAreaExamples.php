@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\IksKnowledgeAreaExamplesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=IksKnowledgeAreaExamplesRepository::class)
+ * normalizationContext={"groups"={"iks-knowledge-area-examples:read"}},
+ * denormalizationContext={"groups"={"iks-knowledge-area-examples:write"}}
  */
 class IksKnowledgeAreaExamples
 {

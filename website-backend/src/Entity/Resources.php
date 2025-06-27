@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ResourcesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ResourcesRepository::class)
+ * normalizationContext={"groups"={"resources:read"}},
+ * denormalizationContext={"groups"={"resources:write"}}
  */
 class Resources
 {

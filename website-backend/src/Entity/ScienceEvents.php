@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ScienceEventsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ScienceEventsRepository::class)
+ * normalizationContext={"groups"={"science-events:read"}},
+ * denormalizationContext={"groups"={"science-events:write"}}
+
  */
 class ScienceEvents
 {
