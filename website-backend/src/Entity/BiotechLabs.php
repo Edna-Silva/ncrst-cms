@@ -9,6 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BiotechLabsRepository::class)
+ * @ApiResource(
+ *     normalizationContext={"groups"={"biotech_labs:read"}},
+ *     denormalizationContext={"groups"={"biotech_labs:write"}}
+ * )
  */
 class BiotechLabs
 {
@@ -16,31 +20,40 @@ class BiotechLabs
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"biotech_labs:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"biotech_labs:read", "biotech_labs:write"})
+
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"biotech_labs:read", "biotech_labs:write"})
+
+     * 
      */
     private $location;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"biotech_labs:read", "biotech_labs:write"})
      */
     private $equipment;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"biotech_labs:read", "biotech_labs:write"})
      */
     private $cerification;
 
     /**
      * @ORM\OneToMany(targetEntity=BiotechLabServices::class, mappedBy="biotech_labs")
+     * @Groups({"biotech_labs:read", "biotech_labs:write"})
      */
     private $biotech_lab_services;
 
