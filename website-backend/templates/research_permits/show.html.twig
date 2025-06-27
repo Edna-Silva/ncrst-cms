@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResearchPermits{% endblock %}
+
+{% block body %}
+    <h1>ResearchPermits</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ research_permit.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ research_permit.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ research_permit.description }}</td>
+            </tr>
+            <tr>
+                <th>File_type</th>
+                <td>{{ research_permit.fileType }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ research_permit.size }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ research_permit.createdAt ? research_permit.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_research_permits_index') }}">back to list</a>
+
+    <a href="{{ path('app_research_permits_edit', {'id': research_permit.id}) }}">edit</a>
+
+    {{ include('research_permits/_delete_form.html.twig') }}
+{% endblock %}

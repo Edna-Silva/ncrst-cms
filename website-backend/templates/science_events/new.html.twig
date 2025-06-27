@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ScienceEvents{% endblock %}
+
+{% block body %}
+    <h1>Create new ScienceEvents</h1>
+
+    {{ include('science_events/_form.html.twig') }}
+
+    <a href="{{ path('app_science_events_index') }}">back to list</a>
+{% endblock %}

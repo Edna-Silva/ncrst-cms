@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BiotechLabServices{% endblock %}
+
+{% block body %}
+    <h1>Edit BiotechLabServices</h1>
+
+    {{ include('biotech_lab_services/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_biotech_lab_services_index') }}">back to list</a>
+
+    {{ include('biotech_lab_services/_delete_form.html.twig') }}
+{% endblock %}

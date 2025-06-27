@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AiInitiatives{% endblock %}
+
+{% block body %}
+    <h1>Create new AiInitiatives</h1>
+
+    {{ include('ai_initiatives/_form.html.twig') }}
+
+    <a href="{{ path('app_ai_initiatives_index') }}">back to list</a>
+{% endblock %}

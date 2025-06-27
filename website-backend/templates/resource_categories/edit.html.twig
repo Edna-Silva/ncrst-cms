@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ResourceCategories{% endblock %}
+
+{% block body %}
+    <h1>Edit ResourceCategories</h1>
+
+    {{ include('resource_categories/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_resource_categories_index') }}">back to list</a>
+
+    {{ include('resource_categories/_delete_form.html.twig') }}
+{% endblock %}

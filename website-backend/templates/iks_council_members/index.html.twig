@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksCouncilMembers index{% endblock %}
+
+{% block body %}
+    <h1>IksCouncilMembers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Expertise</th>
+                <th>Community</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iks_council_member in iks_council_members %}
+            <tr>
+                <td>{{ iks_council_member.id }}</td>
+                <td>{{ iks_council_member.name }}</td>
+                <td>{{ iks_council_member.role }}</td>
+                <td>{{ iks_council_member.expertise }}</td>
+                <td>{{ iks_council_member.community }}</td>
+                <td>
+                    <a href="{{ path('app_iks_council_members_show', {'id': iks_council_member.id}) }}">show</a>
+                    <a href="{{ path('app_iks_council_members_edit', {'id': iks_council_member.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_council_members_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BoardCommissioners index{% endblock %}
+
+{% block body %}
+    <h1>BoardCommissioners index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Expertise</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for board_commissioner in board_commissioners %}
+            <tr>
+                <td>{{ board_commissioner.id }}</td>
+                <td>{{ board_commissioner.name }}</td>
+                <td>{{ board_commissioner.role }}</td>
+                <td>{{ board_commissioner.expertise }}</td>
+                <td>{{ board_commissioner.createdAt ? board_commissioner.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_board_commissioners_show', {'id': board_commissioner.id}) }}">show</a>
+                    <a href="{{ path('app_board_commissioners_edit', {'id': board_commissioner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_board_commissioners_new') }}">Create new</a>
+{% endblock %}

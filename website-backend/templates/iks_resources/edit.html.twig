@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IksResources{% endblock %}
+
+{% block body %}
+    <h1>Edit IksResources</h1>
+
+    {{ include('iks_resources/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_iks_resources_index') }}">back to list</a>
+
+    {{ include('iks_resources/_delete_form.html.twig') }}
+{% endblock %}

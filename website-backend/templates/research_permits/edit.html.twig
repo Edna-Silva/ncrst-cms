@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ResearchPermits{% endblock %}
+
+{% block body %}
+    <h1>Edit ResearchPermits</h1>
+
+    {{ include('research_permits/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_research_permits_index') }}">back to list</a>
+
+    {{ include('research_permits/_delete_form.html.twig') }}
+{% endblock %}

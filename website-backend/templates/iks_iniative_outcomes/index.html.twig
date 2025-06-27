@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksIniativeOutcomes index{% endblock %}
+
+{% block body %}
+    <h1>IksIniativeOutcomes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Outcome</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iks_iniative_outcome in iks_iniative_outcomes %}
+            <tr>
+                <td>{{ iks_iniative_outcome.id }}</td>
+                <td>{{ iks_iniative_outcome.outcome }}</td>
+                <td>
+                    <a href="{{ path('app_iks_iniative_outcomes_show', {'id': iks_iniative_outcome.id}) }}">show</a>
+                    <a href="{{ path('app_iks_iniative_outcomes_edit', {'id': iks_iniative_outcome.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_iniative_outcomes_new') }}">Create new</a>
+{% endblock %}

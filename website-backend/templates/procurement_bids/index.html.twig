@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProcurementBids index{% endblock %}
+
+{% block body %}
+    <h1>ProcurementBids index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Reference</th>
+                <th>Description</th>
+                <th>Value</th>
+                <th>Closing_date</th>
+                <th>Publish_date</th>
+                <th>Status</th>
+                <th>Is_awarded</th>
+                <th>Vendor</th>
+                <th>Awarded_value</th>
+                <th>Awarded_date</th>
+                <th>Contract_period</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for procurement_bid in procurement_bids %}
+            <tr>
+                <td>{{ procurement_bid.id }}</td>
+                <td>{{ procurement_bid.title }}</td>
+                <td>{{ procurement_bid.category }}</td>
+                <td>{{ procurement_bid.reference }}</td>
+                <td>{{ procurement_bid.description }}</td>
+                <td>{{ procurement_bid.value }}</td>
+                <td>{{ procurement_bid.closingDate ? procurement_bid.closingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ procurement_bid.publishDate ? procurement_bid.publishDate|date('Y-m-d') : '' }}</td>
+                <td>{{ procurement_bid.status }}</td>
+                <td>{{ procurement_bid.isAwarded ? 'Yes' : 'No' }}</td>
+                <td>{{ procurement_bid.vendor }}</td>
+                <td>{{ procurement_bid.awardedValue }}</td>
+                <td>{{ procurement_bid.awardedDate ? procurement_bid.awardedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ procurement_bid.contractPeriod }}</td>
+                <td>{{ procurement_bid.createdAt ? procurement_bid.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_procurement_bids_show', {'id': procurement_bid.id}) }}">show</a>
+                    <a href="{{ path('app_procurement_bids_edit', {'id': procurement_bid.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_procurement_bids_new') }}">Create new</a>
+{% endblock %}

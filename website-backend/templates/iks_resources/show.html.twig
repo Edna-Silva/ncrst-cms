@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksResources{% endblock %}
+
+{% block body %}
+    <h1>IksResources</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ iks_resource.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ iks_resource.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ iks_resource.description }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ iks_resource.type }}</td>
+            </tr>
+            <tr>
+                <th>Acess</th>
+                <td>{{ iks_resource.acess }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_resources_index') }}">back to list</a>
+
+    <a href="{{ path('app_iks_resources_edit', {'id': iks_resource.id}) }}">edit</a>
+
+    {{ include('iks_resources/_delete_form.html.twig') }}
+{% endblock %}

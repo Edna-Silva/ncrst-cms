@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SciencePrograms{% endblock %}
+
+{% block body %}
+    <h1>Edit SciencePrograms</h1>
+
+    {{ include('science_programs/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_science_programs_index') }}">back to list</a>
+
+    {{ include('science_programs/_delete_form.html.twig') }}
+{% endblock %}

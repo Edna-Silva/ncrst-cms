@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Councils index{% endblock %}
+
+{% block body %}
+    <h1>Councils index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Members_count</th>
+                <th>Link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for council in councils %}
+            <tr>
+                <td>{{ council.id }}</td>
+                <td>{{ council.name }}</td>
+                <td>{{ council.description }}</td>
+                <td>{{ council.membersCount }}</td>
+                <td>{{ council.link }}</td>
+                <td>
+                    <a href="{{ path('app_councils_show', {'id': council.id}) }}">show</a>
+                    <a href="{{ path('app_councils_edit', {'id': council.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_councils_new') }}">Create new</a>
+{% endblock %}

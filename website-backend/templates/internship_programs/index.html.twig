@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InternshipPrograms index{% endblock %}
+
+{% block body %}
+    <h1>InternshipPrograms index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Intake</th>
+                <th>Eligibility</th>
+                <th>Stipend</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for internship_program in internship_programs %}
+            <tr>
+                <td>{{ internship_program.id }}</td>
+                <td>{{ internship_program.title }}</td>
+                <td>{{ internship_program.duration }}</td>
+                <td>{{ internship_program.intake }}</td>
+                <td>{{ internship_program.eligibility }}</td>
+                <td>{{ internship_program.stipend }}</td>
+                <td>{{ internship_program.createdAt ? internship_program.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_internship_programs_show', {'id': internship_program.id}) }}">show</a>
+                    <a href="{{ path('app_internship_programs_edit', {'id': internship_program.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_internship_programs_new') }}">Create new</a>
+{% endblock %}

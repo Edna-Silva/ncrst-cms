@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IksIniativeOutcomes{% endblock %}
+
+{% block body %}
+    <h1>Edit IksIniativeOutcomes</h1>
+
+    {{ include('iks_iniative_outcomes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_iks_iniative_outcomes_index') }}">back to list</a>
+
+    {{ include('iks_iniative_outcomes/_delete_form.html.twig') }}
+{% endblock %}

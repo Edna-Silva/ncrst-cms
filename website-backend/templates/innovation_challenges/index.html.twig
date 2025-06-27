@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InnovationChallenges index{% endblock %}
+
+{% block body %}
+    <h1>InnovationChallenges index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Participants</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for innovation_challenge in innovation_challenges %}
+            <tr>
+                <td>{{ innovation_challenge.id }}</td>
+                <td>{{ innovation_challenge.name }}</td>
+                <td>{{ innovation_challenge.description }}</td>
+                <td>{{ innovation_challenge.duration }}</td>
+                <td>{{ innovation_challenge.participants }}</td>
+                <td>{{ innovation_challenge.status }}</td>
+                <td>{{ innovation_challenge.deadline ? innovation_challenge.deadline|date('Y-m-d') : '' }}</td>
+                <td>{{ innovation_challenge.createdAt ? innovation_challenge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_innovation_challenges_show', {'id': innovation_challenge.id}) }}">show</a>
+                    <a href="{{ path('app_innovation_challenges_edit', {'id': innovation_challenge.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_innovation_challenges_new') }}">Create new</a>
+{% endblock %}

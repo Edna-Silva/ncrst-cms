@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ResearchGrants{% endblock %}
+
+{% block body %}
+    <h1>Create new ResearchGrants</h1>
+
+    {{ include('research_grants/_form.html.twig') }}
+
+    <a href="{{ path('app_research_grants_index') }}">back to list</a>
+{% endblock %}

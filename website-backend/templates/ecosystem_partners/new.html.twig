@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EcosystemPartners{% endblock %}
+
+{% block body %}
+    <h1>Create new EcosystemPartners</h1>
+
+    {{ include('ecosystem_partners/_form.html.twig') }}
+
+    <a href="{{ path('app_ecosystem_partners_index') }}">back to list</a>
+{% endblock %}

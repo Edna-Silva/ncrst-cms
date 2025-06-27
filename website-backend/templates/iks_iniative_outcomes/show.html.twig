@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksIniativeOutcomes{% endblock %}
+
+{% block body %}
+    <h1>IksIniativeOutcomes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ iks_iniative_outcome.id }}</td>
+            </tr>
+            <tr>
+                <th>Outcome</th>
+                <td>{{ iks_iniative_outcome.outcome }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_iniative_outcomes_index') }}">back to list</a>
+
+    <a href="{{ path('app_iks_iniative_outcomes_edit', {'id': iks_iniative_outcome.id}) }}">edit</a>
+
+    {{ include('iks_iniative_outcomes/_delete_form.html.twig') }}
+{% endblock %}

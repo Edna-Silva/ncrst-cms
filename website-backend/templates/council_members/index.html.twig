@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CouncilMembers index{% endblock %}
+
+{% block body %}
+    <h1>CouncilMembers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Expertise</th>
+                <th>Institution</th>
+                <th>Community</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for council_member in council_members %}
+            <tr>
+                <td>{{ council_member.id }}</td>
+                <td>{{ council_member.name }}</td>
+                <td>{{ council_member.role }}</td>
+                <td>{{ council_member.expertise }}</td>
+                <td>{{ council_member.institution }}</td>
+                <td>{{ council_member.community }}</td>
+                <td>
+                    <a href="{{ path('app_council_members_show', {'id': council_member.id}) }}">show</a>
+                    <a href="{{ path('app_council_members_edit', {'id': council_member.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_council_members_new') }}">Create new</a>
+{% endblock %}

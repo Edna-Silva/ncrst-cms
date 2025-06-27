@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResearchGrants index{% endblock %}
+
+{% block body %}
+    <h1>ResearchGrants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Deadline</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for research_grant in research_grants %}
+            <tr>
+                <td>{{ research_grant.id }}</td>
+                <td>{{ research_grant.title }}</td>
+                <td>{{ research_grant.deadline ? research_grant.deadline|date('Y-m-d') : '' }}</td>
+                <td>{{ research_grant.amount }}</td>
+                <td>{{ research_grant.category }}</td>
+                <td>{{ research_grant.status }}</td>
+                <td>{{ research_grant.createdAt ? research_grant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_research_grants_show', {'id': research_grant.id}) }}">show</a>
+                    <a href="{{ path('app_research_grants_edit', {'id': research_grant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_research_grants_new') }}">Create new</a>
+{% endblock %}

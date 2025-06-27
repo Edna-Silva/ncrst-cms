@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New IksResources{% endblock %}
+
+{% block body %}
+    <h1>Create new IksResources</h1>
+
+    {{ include('iks_resources/_form.html.twig') }}
+
+    <a href="{{ path('app_iks_resources_index') }}">back to list</a>
+{% endblock %}

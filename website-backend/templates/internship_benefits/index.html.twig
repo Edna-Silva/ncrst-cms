@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InternshipBenefits index{% endblock %}
+
+{% block body %}
+    <h1>InternshipBenefits index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Benefit</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for internship_benefit in internship_benefits %}
+            <tr>
+                <td>{{ internship_benefit.id }}</td>
+                <td>{{ internship_benefit.benefit }}</td>
+                <td>
+                    <a href="{{ path('app_internship_benefits_show', {'id': internship_benefit.id}) }}">show</a>
+                    <a href="{{ path('app_internship_benefits_edit', {'id': internship_benefit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_internship_benefits_new') }}">Create new</a>
+{% endblock %}

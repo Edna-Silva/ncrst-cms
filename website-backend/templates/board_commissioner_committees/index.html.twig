@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BoardCommissionerCommittees index{% endblock %}
+
+{% block body %}
+    <h1>BoardCommissionerCommittees index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Committee</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for board_commissioner_committee in board_commissioner_committees %}
+            <tr>
+                <td>{{ board_commissioner_committee.id }}</td>
+                <td>{{ board_commissioner_committee.committee }}</td>
+                <td>
+                    <a href="{{ path('app_board_commissioner_committees_show', {'id': board_commissioner_committee.id}) }}">show</a>
+                    <a href="{{ path('app_board_commissioner_committees_edit', {'id': board_commissioner_committee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_board_commissioner_committees_new') }}">Create new</a>
+{% endblock %}

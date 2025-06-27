@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResearchGrants{% endblock %}
+
+{% block body %}
+    <h1>ResearchGrants</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ research_grant.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ research_grant.title }}</td>
+            </tr>
+            <tr>
+                <th>Deadline</th>
+                <td>{{ research_grant.deadline ? research_grant.deadline|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ research_grant.amount }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ research_grant.category }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ research_grant.status }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ research_grant.createdAt ? research_grant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_research_grants_index') }}">back to list</a>
+
+    <a href="{{ path('app_research_grants_edit', {'id': research_grant.id}) }}">edit</a>
+
+    {{ include('research_grants/_delete_form.html.twig') }}
+{% endblock %}

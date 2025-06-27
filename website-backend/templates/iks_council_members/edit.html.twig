@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IksCouncilMembers{% endblock %}
+
+{% block body %}
+    <h1>Edit IksCouncilMembers</h1>
+
+    {{ include('iks_council_members/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_iks_council_members_index') }}">back to list</a>
+
+    {{ include('iks_council_members/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SciencePrograms{% endblock %}
+
+{% block body %}
+    <h1>SciencePrograms</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ science_program.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ science_program.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ science_program.description }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ science_program.icon }}</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>{{ science_program.color }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ science_program.link }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_science_programs_index') }}">back to list</a>
+
+    <a href="{{ path('app_science_programs_edit', {'id': science_program.id}) }}">edit</a>
+
+    {{ include('science_programs/_delete_form.html.twig') }}
+{% endblock %}

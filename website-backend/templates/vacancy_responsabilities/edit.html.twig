@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit VacancyResponsabilities{% endblock %}
+
+{% block body %}
+    <h1>Edit VacancyResponsabilities</h1>
+
+    {{ include('vacancy_responsabilities/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_vacancy_responsabilities_index') }}">back to list</a>
+
+    {{ include('vacancy_responsabilities/_delete_form.html.twig') }}
+{% endblock %}

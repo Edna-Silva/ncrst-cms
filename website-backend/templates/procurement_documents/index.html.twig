@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProcurementDocuments index{% endblock %}
+
+{% block body %}
+    <h1>ProcurementDocuments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Document_name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for procurement_document in procurement_documents %}
+            <tr>
+                <td>{{ procurement_document.id }}</td>
+                <td>{{ procurement_document.documentName }}</td>
+                <td>
+                    <a href="{{ path('app_procurement_documents_show', {'id': procurement_document.id}) }}">show</a>
+                    <a href="{{ path('app_procurement_documents_edit', {'id': procurement_document.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_procurement_documents_new') }}">Create new</a>
+{% endblock %}

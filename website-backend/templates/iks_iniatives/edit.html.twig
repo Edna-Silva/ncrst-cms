@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IksIniatives{% endblock %}
+
+{% block body %}
+    <h1>Edit IksIniatives</h1>
+
+    {{ include('iks_iniatives/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_iks_iniatives_index') }}">back to list</a>
+
+    {{ include('iks_iniatives/_delete_form.html.twig') }}
+{% endblock %}

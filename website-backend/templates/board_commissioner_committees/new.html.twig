@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BoardCommissionerCommittees{% endblock %}
+
+{% block body %}
+    <h1>Create new BoardCommissionerCommittees</h1>
+
+    {{ include('board_commissioner_committees/_form.html.twig') }}
+
+    <a href="{{ path('app_board_commissioner_committees_index') }}">back to list</a>
+{% endblock %}

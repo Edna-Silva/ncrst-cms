@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Innovators{% endblock %}
+
+{% block body %}
+    <h1>Create new Innovators</h1>
+
+    {{ include('innovators/_form.html.twig') }}
+
+    <a href="{{ path('app_innovators_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Innovators index{% endblock %}
+
+{% block body %}
+    <h1>Innovators index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Sector</th>
+                <th>Innovation</th>
+                <th>Impact</th>
+                <th>Funding</th>
+                <th>Image_url</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for innovator in innovators %}
+            <tr>
+                <td>{{ innovator.id }}</td>
+                <td>{{ innovator.name }}</td>
+                <td>{{ innovator.company }}</td>
+                <td>{{ innovator.sector }}</td>
+                <td>{{ innovator.innovation }}</td>
+                <td>{{ innovator.impact }}</td>
+                <td>{{ innovator.funding }}</td>
+                <td>{{ innovator.imageUrl }}</td>
+                <td>{{ innovator.createdAt ? innovator.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_innovators_show', {'id': innovator.id}) }}">show</a>
+                    <a href="{{ path('app_innovators_edit', {'id': innovator.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_innovators_new') }}">Create new</a>
+{% endblock %}

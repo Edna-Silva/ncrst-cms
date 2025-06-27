@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AiInitiatives{% endblock %}
+
+{% block body %}
+    <h1>AiInitiatives</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ai_initiative.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ ai_initiative.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ai_initiative.description }}</td>
+            </tr>
+            <tr>
+                <th>Participants</th>
+                <td>{{ ai_initiative.participants }}</td>
+            </tr>
+            <tr>
+                <th>Projects</th>
+                <td>{{ ai_initiative.projects }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ai_initiatives_index') }}">back to list</a>
+
+    <a href="{{ path('app_ai_initiatives_edit', {'id': ai_initiative.id}) }}">edit</a>
+
+    {{ include('ai_initiatives/_delete_form.html.twig') }}
+{% endblock %}

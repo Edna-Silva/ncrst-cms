@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksIniatives{% endblock %}
+
+{% block body %}
+    <h1>IksIniatives</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ iks_iniative.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ iks_iniative.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ iks_iniative.description }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ iks_iniative.status }}</td>
+            </tr>
+            <tr>
+                <th>Timeline</th>
+                <td>{{ iks_iniative.timeline }}</td>
+            </tr>
+            <tr>
+                <th>Communities</th>
+                <td>{{ iks_iniative.communities }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_iniatives_index') }}">back to list</a>
+
+    <a href="{{ path('app_iks_iniatives_edit', {'id': iks_iniative.id}) }}">edit</a>
+
+    {{ include('iks_iniatives/_delete_form.html.twig') }}
+{% endblock %}

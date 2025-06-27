@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resources{% endblock %}
+
+{% block body %}
+    <h1>Resources</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ resource.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ resource.title }}</td>
+            </tr>
+            <tr>
+                <th>Yer</th>
+                <td>{{ resource.yer }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ resource.description }}</td>
+            </tr>
+            <tr>
+                <th>File_type</th>
+                <td>{{ resource.fileType }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ resource.size }}</td>
+            </tr>
+            <tr>
+                <th>Downloads</th>
+                <td>{{ resource.downloads }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ resource.date ? resource.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ resource.createdAt ? resource.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_resources_index') }}">back to list</a>
+
+    <a href="{{ path('app_resources_edit', {'id': resource.id}) }}">edit</a>
+
+    {{ include('resources/_delete_form.html.twig') }}
+{% endblock %}

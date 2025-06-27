@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksCouncilMembers{% endblock %}
+
+{% block body %}
+    <h1>IksCouncilMembers</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ iks_council_member.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ iks_council_member.name }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ iks_council_member.role }}</td>
+            </tr>
+            <tr>
+                <th>Expertise</th>
+                <td>{{ iks_council_member.expertise }}</td>
+            </tr>
+            <tr>
+                <th>Community</th>
+                <td>{{ iks_council_member.community }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_council_members_index') }}">back to list</a>
+
+    <a href="{{ path('app_iks_council_members_edit', {'id': iks_council_member.id}) }}">edit</a>
+
+    {{ include('iks_council_members/_delete_form.html.twig') }}
+{% endblock %}

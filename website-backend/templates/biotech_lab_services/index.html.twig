@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BiotechLabServices index{% endblock %}
+
+{% block body %}
+    <h1>BiotechLabServices index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Service</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for biotech_lab_service in biotech_lab_services %}
+            <tr>
+                <td>{{ biotech_lab_service.id }}</td>
+                <td>{{ biotech_lab_service.service }}</td>
+                <td>
+                    <a href="{{ path('app_biotech_lab_services_show', {'id': biotech_lab_service.id}) }}">show</a>
+                    <a href="{{ path('app_biotech_lab_services_edit', {'id': biotech_lab_service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_biotech_lab_services_new') }}">Create new</a>
+{% endblock %}

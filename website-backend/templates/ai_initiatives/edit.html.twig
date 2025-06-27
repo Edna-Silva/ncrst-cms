@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AiInitiatives{% endblock %}
+
+{% block body %}
+    <h1>Edit AiInitiatives</h1>
+
+    {{ include('ai_initiatives/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ai_initiatives_index') }}">back to list</a>
+
+    {{ include('ai_initiatives/_delete_form.html.twig') }}
+{% endblock %}

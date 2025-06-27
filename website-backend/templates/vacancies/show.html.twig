@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vacancies{% endblock %}
+
+{% block body %}
+    <h1>Vacancies</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vacancy.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ vacancy.title }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ vacancy.department }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ vacancy.location }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ vacancy.type }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ vacancy.level }}</td>
+            </tr>
+            <tr>
+                <th>Closing_date</th>
+                <td>{{ vacancy.closingDate ? vacancy.closingDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Publish_date</th>
+                <td>{{ vacancy.publishDate ? vacancy.publishDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ vacancy.salary }}</td>
+            </tr>
+            <tr>
+                <th>Create_at</th>
+                <td>{{ vacancy.createAt ? vacancy.createAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vacancies_index') }}">back to list</a>
+
+    <a href="{{ path('app_vacancies_edit', {'id': vacancy.id}) }}">edit</a>
+
+    {{ include('vacancies/_delete_form.html.twig') }}
+{% endblock %}

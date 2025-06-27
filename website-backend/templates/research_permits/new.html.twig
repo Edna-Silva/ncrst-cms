@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ResearchPermits{% endblock %}
+
+{% block body %}
+    <h1>Create new ResearchPermits</h1>
+
+    {{ include('research_permits/_form.html.twig') }}
+
+    <a href="{{ path('app_research_permits_index') }}">back to list</a>
+{% endblock %}

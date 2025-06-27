@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ScienceEvents{% endblock %}
+
+{% block body %}
+    <h1>ScienceEvents</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ science_event.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ science_event.title }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ science_event.date ? science_event.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ science_event.location }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ science_event.category }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ science_event.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_science_events_index') }}">back to list</a>
+
+    <a href="{{ path('app_science_events_edit', {'id': science_event.id}) }}">edit</a>
+
+    {{ include('science_events/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SciencePrograms index{% endblock %}
+
+{% block body %}
+    <h1>SciencePrograms index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th>Color</th>
+                <th>Link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for science_program in science_programs %}
+            <tr>
+                <td>{{ science_program.id }}</td>
+                <td>{{ science_program.title }}</td>
+                <td>{{ science_program.description }}</td>
+                <td>{{ science_program.icon }}</td>
+                <td>{{ science_program.color }}</td>
+                <td>{{ science_program.link }}</td>
+                <td>
+                    <a href="{{ path('app_science_programs_show', {'id': science_program.id}) }}">show</a>
+                    <a href="{{ path('app_science_programs_edit', {'id': science_program.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_science_programs_new') }}">Create new</a>
+{% endblock %}

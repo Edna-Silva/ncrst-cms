@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InternshipDepartments index{% endblock %}
+
+{% block body %}
+    <h1>InternshipDepartments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Department</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for internship_department in internship_departments %}
+            <tr>
+                <td>{{ internship_department.id }}</td>
+                <td>{{ internship_department.department }}</td>
+                <td>
+                    <a href="{{ path('app_internship_departments_show', {'id': internship_department.id}) }}">show</a>
+                    <a href="{{ path('app_internship_departments_edit', {'id': internship_department.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_internship_departments_new') }}">Create new</a>
+{% endblock %}

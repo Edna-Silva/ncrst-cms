@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksResources index{% endblock %}
+
+{% block body %}
+    <h1>IksResources index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Acess</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iks_resource in iks_resources %}
+            <tr>
+                <td>{{ iks_resource.id }}</td>
+                <td>{{ iks_resource.title }}</td>
+                <td>{{ iks_resource.description }}</td>
+                <td>{{ iks_resource.type }}</td>
+                <td>{{ iks_resource.acess }}</td>
+                <td>
+                    <a href="{{ path('app_iks_resources_show', {'id': iks_resource.id}) }}">show</a>
+                    <a href="{{ path('app_iks_resources_edit', {'id': iks_resource.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_resources_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EcosystemPartnerExamples{% endblock %}
+
+{% block body %}
+    <h1>Edit EcosystemPartnerExamples</h1>
+
+    {{ include('ecosystem_partner_examples/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ecosystem_partner_examples_index') }}">back to list</a>
+
+    {{ include('ecosystem_partner_examples/_delete_form.html.twig') }}
+{% endblock %}

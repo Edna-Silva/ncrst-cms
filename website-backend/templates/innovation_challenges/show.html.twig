@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InnovationChallenges{% endblock %}
+
+{% block body %}
+    <h1>InnovationChallenges</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ innovation_challenge.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ innovation_challenge.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ innovation_challenge.description }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ innovation_challenge.duration }}</td>
+            </tr>
+            <tr>
+                <th>Participants</th>
+                <td>{{ innovation_challenge.participants }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ innovation_challenge.status }}</td>
+            </tr>
+            <tr>
+                <th>Deadline</th>
+                <td>{{ innovation_challenge.deadline ? innovation_challenge.deadline|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ innovation_challenge.createdAt ? innovation_challenge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_innovation_challenges_index') }}">back to list</a>
+
+    <a href="{{ path('app_innovation_challenges_edit', {'id': innovation_challenge.id}) }}">edit</a>
+
+    {{ include('innovation_challenges/_delete_form.html.twig') }}
+{% endblock %}

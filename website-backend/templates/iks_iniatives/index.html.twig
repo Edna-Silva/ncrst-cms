@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IksIniatives index{% endblock %}
+
+{% block body %}
+    <h1>IksIniatives index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Timeline</th>
+                <th>Communities</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iks_iniative in iks_iniatives %}
+            <tr>
+                <td>{{ iks_iniative.id }}</td>
+                <td>{{ iks_iniative.title }}</td>
+                <td>{{ iks_iniative.description }}</td>
+                <td>{{ iks_iniative.status }}</td>
+                <td>{{ iks_iniative.timeline }}</td>
+                <td>{{ iks_iniative.communities }}</td>
+                <td>
+                    <a href="{{ path('app_iks_iniatives_show', {'id': iks_iniative.id}) }}">show</a>
+                    <a href="{{ path('app_iks_iniatives_edit', {'id': iks_iniative.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_iks_iniatives_new') }}">Create new</a>
+{% endblock %}

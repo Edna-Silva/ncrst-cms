@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BoardCommissionerCommittees{% endblock %}
+
+{% block body %}
+    <h1>Edit BoardCommissionerCommittees</h1>
+
+    {{ include('board_commissioner_committees/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_board_commissioner_committees_index') }}">back to list</a>
+
+    {{ include('board_commissioner_committees/_delete_form.html.twig') }}
+{% endblock %}

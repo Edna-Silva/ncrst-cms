@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ResearchPriorities{% endblock %}
+
+{% block body %}
+    <h1>Create new ResearchPriorities</h1>
+
+    {{ include('research_priorities/_form.html.twig') }}
+
+    <a href="{{ path('app_research_priorities_index') }}">back to list</a>
+{% endblock %}

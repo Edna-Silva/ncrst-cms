@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VacancyRequirements index{% endblock %}
+
+{% block body %}
+    <h1>VacancyRequirements index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Requirement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vacancy_requirement in vacancy_requirements %}
+            <tr>
+                <td>{{ vacancy_requirement.id }}</td>
+                <td>{{ vacancy_requirement.requirement }}</td>
+                <td>
+                    <a href="{{ path('app_vacancy_requirements_show', {'id': vacancy_requirement.id}) }}">show</a>
+                    <a href="{{ path('app_vacancy_requirements_edit', {'id': vacancy_requirement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vacancy_requirements_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProcurementBids{% endblock %}
+
+{% block body %}
+    <h1>Create new ProcurementBids</h1>
+
+    {{ include('procurement_bids/_form.html.twig') }}
+
+    <a href="{{ path('app_procurement_bids_index') }}">back to list</a>
+{% endblock %}

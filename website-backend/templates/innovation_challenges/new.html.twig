@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New InnovationChallenges{% endblock %}
+
+{% block body %}
+    <h1>Create new InnovationChallenges</h1>
+
+    {{ include('innovation_challenges/_form.html.twig') }}
+
+    <a href="{{ path('app_innovation_challenges_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AiInitiatives index{% endblock %}
+
+{% block body %}
+    <h1>AiInitiatives index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Participants</th>
+                <th>Projects</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ai_initiative in ai_initiatives %}
+            <tr>
+                <td>{{ ai_initiative.id }}</td>
+                <td>{{ ai_initiative.title }}</td>
+                <td>{{ ai_initiative.description }}</td>
+                <td>{{ ai_initiative.participants }}</td>
+                <td>{{ ai_initiative.projects }}</td>
+                <td>
+                    <a href="{{ path('app_ai_initiatives_show', {'id': ai_initiative.id}) }}">show</a>
+                    <a href="{{ path('app_ai_initiatives_edit', {'id': ai_initiative.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ai_initiatives_new') }}">Create new</a>
+{% endblock %}

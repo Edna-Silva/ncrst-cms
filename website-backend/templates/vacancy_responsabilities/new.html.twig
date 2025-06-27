@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New VacancyResponsabilities{% endblock %}
+
+{% block body %}
+    <h1>Create new VacancyResponsabilities</h1>
+
+    {{ include('vacancy_responsabilities/_form.html.twig') }}
+
+    <a href="{{ path('app_vacancy_responsabilities_index') }}">back to list</a>
+{% endblock %}
