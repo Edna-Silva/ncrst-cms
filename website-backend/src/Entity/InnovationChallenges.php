@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InnovationChallengesRepository::class)
- * normalizationContext={"groups"={"innovation-challenges:read"}},
- * denormalizationContext={"groups"={"innovation-challenges:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"innovation-challenges:read"}},
+ *  denormalizationContext={"groups"={"innovation-challenges:write"}}
+ * )
  */
 class InnovationChallenges
 {
@@ -19,46 +21,55 @@ class InnovationChallenges
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"innovation-challenges:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $participants;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $deadline;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $created_at;
 
     /**
      * @ORM\OneToMany(targetEntity=InnovationChallengeCategories::class, mappedBy="innovation_challenge")
+     * @Groups({"innovation-challenges:read", "innovation-challenges:write"})
      */
     private $innovation_challenge_categories;
 

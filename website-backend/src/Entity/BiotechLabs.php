@@ -6,7 +6,8 @@ use App\Repository\BiotechLabsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=BiotechLabsRepository::class)
  * @ApiResource(
@@ -103,14 +104,14 @@ class BiotechLabs
         return $this;
     }
 
-    public function getCerification(): ?string
+    public function getCertification(): ?string
     {
-        return $this->cerification;
+        return $this->certification;
     }
 
-    public function setCerification(?string $cerification): self
+    public function setCertification(?string $certification): self
     {
-        $this->cerification = $cerification;
+        $this->certification = $certification;
 
         return $this;
     }

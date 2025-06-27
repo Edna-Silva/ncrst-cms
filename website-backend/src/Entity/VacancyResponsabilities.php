@@ -6,10 +6,13 @@ use App\Repository\VacancyResponsabilitiesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=VacancyResponsabilitiesRepository::class)
- * normalizationContext={"groups"={"vacancy-responsibilities:read"}},
- * denormalizationContext={"groups"={"vacancy-responsibilities:write"}}
+ * @ApiResource(
+ *   normalizationContext={"groups"={"vacancy-responsibilities:read"}},
+ *   denormalizationContext={"groups"={"vacancy-responsibilities:write"}}
+ * )
  */
 class VacancyResponsabilities
 {
@@ -17,23 +20,22 @@ class VacancyResponsabilities
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vacancy-responsibilities:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vacancies::class, inversedBy="vacancyResponsabilities")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"vacancy-responsibilities:read", "vacancy-responsibilities:write"})
      */
     private $vacancy;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"vacancy-responsibilities:read", "vacancy-responsibilities:write"})
      */
     private $responsability;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
 
     public function getId(): ?int
     {
@@ -63,5 +65,4 @@ class VacancyResponsabilities
 
         return $this;
     }
-
 }

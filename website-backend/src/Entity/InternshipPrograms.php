@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InternshipProgramsRepository::class)
- * normalizationContext={"groups"={"internship-programs:read"}},
- * denormalizationContext={"groups"={"internship-programs:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"internship-programs:read"}},
+ *  denormalizationContext={"groups"={"internship-programs:write"}}
+ * )
  */
 class InternshipPrograms
 {
@@ -19,46 +21,55 @@ class InternshipPrograms
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"internship-programs:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $intake;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $eligibility;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $stipend;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $created_at;
 
     /**
      * @ORM\OneToMany(targetEntity=InternshipDepartments::class, mappedBy="internship_programs")
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $internship_department;
 
     /**
      * @ORM\OneToMany(targetEntity=InternshipBenefits::class, mappedBy="internship_programs")
+     * @Groups({"internship-programs:read", "internship-programs:write"})
      */
     private $internship_benefits;
 

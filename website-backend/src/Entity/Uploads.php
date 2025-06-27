@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UploadsRepository::class)
- * normalizationContext={"groups"={"uploads:read"}},
- * denormalizationContext={"groups"={"uploads:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"uploads:read"}},
+ *  denormalizationContext={"groups"={"uploads:write"}}
+ * )
  */
 class Uploads
 {
@@ -18,37 +20,44 @@ class Uploads
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"uploads:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="uploads")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $file_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $file_path;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $file_type;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $file_size;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"uploads:read", "uploads:write"})
      */
     private $uploaded_at;
 

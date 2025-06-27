@@ -9,8 +9,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=IksCouncilMembersRepository::class)
- * normalizationContext={"groups"={"iks-council-members:read"}},
- * denormalizationContext={"groups"={"iks-council-members:write"}}
+ * 
+ * @ApiResource(
+ *  normalizationContext={"groups"={"iks-council-members:read"}},
+ *  denormalizationContext={"groups"={"iks-council-members:write"}}
+ * )
  */
 class IksCouncilMembers
 {
@@ -18,26 +21,31 @@ class IksCouncilMembers
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"iks-council-members:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"iks-council-members:read", "iks-council-members:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     *  @Groups({"iks-council-members:read", "iks-council-members:write"})
      */
     private $role;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups({"iks-council-members:read", "iks-council-members:write"})
      */
     private $expertise;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"iks-council-members:read", "iks-council-members:write"})
      */
     private $community;
 

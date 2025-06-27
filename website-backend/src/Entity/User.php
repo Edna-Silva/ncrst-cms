@@ -11,8 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * normalizationContext={"groups"={"user:read"}},
- * denormalizationContext={"groups"={"user:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"user:read"}},
+ *  denormalizationContext={"groups"={"user:write"}}
+ * )
  */
 class User
 {
@@ -20,41 +22,49 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"user:read", "user:write"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"user:read", "user:write"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user:read", "user:write"})
      */
     private $password_hash;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"user:read", "user:write"})
      */
     private $role;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"user:read", "user:write"})
      */
     private $is_active;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"user:read", "user:write"})
      */
     private $created_at;
 
     /**
      * @ORM\OneToMany(targetEntity=Uploads::class, mappedBy="user")
+     * @Groups({"user:read", "user:write"})
      */
     private $uploads;
 

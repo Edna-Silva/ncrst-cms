@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InternshipDepartmentsRepository::class)
- * normalizationContext={"groups"={"internship-departments:read"}},
- * denormalizationContext={"groups"={"internship-departments:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"internship-departments:read"}},
+ *  denormalizationContext={"groups"={"internship-departments:write"}}
+ * )
 
  */
 class InternshipDepartments
@@ -18,17 +20,20 @@ class InternshipDepartments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"internship-departments:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=InternshipPrograms::class, inversedBy="internship_department")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"internship-departments:read", "internship-departments:write"})
      */
     private $internship_programs;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"internship-departments:read", "internship-departments:write"})
      */
     private $department;
 

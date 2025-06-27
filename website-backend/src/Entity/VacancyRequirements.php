@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=VacancyRequirementsRepository::class)
- * normalizationContext={"groups"={"vacancy-requirements:read"}},
- * denormalizationContext={"groups"={"vacancy-requirements:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"vacancy-requirements:read"}},
+ *  denormalizationContext={"groups"={"vacancy-requirements:write"}}
+ * )
  */
 class VacancyRequirements
 {
@@ -18,17 +20,20 @@ class VacancyRequirements
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vacancy-requirements:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vacancies::class, inversedBy="vacancyRequirements")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"vacancy-requirements:read", "vacancy-requirements:write"})
      */
     private $vacancy;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"vacancy-requirements:read", "vacancy-requirements:write"})
      */
     private $requirement;
 

@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ScienceEventsRepository::class)
- * normalizationContext={"groups"={"science-events:read"}},
- * denormalizationContext={"groups"={"science-events:write"}}
+ * @ApiResource( 
+ *  normalizationContext={"groups"={"science-events:read"}},
+ *  denormalizationContext={"groups"={"science-events:write"}}
+ * )
 
  */
 class ScienceEvents
@@ -19,31 +21,37 @@ class ScienceEvents
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"science-events:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"science-events:read", "science-events::write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"science-events:read", "science-events::write"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"science-events:read", "science-events::write"})
      */
     private $location;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"science-events:read", "science-events::write"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"science-events:read", "science-events::write"})
      */
     private $description;
 

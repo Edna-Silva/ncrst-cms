@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ScienceProgramsRepository::class)
- * normalizationContext={"groups"={"science-programs:read"}},
- * denormalizationContext={"groups"={"science-programs:write"}}
+ *  @ApiResource(
+ *  normalizationContext={"groups"={"science-programs:read"}},
+ *  denormalizationContext={"groups"={"science-programs:write"}}
+ * )
  */
 class SciencePrograms
 {
@@ -18,31 +20,37 @@ class SciencePrograms
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"science-programs:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"science-programs:read", "science-programs:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"science-programs:read", "science-programs:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"science-programs:read", "science-programs:write"})
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"science-programs:read", "science-programs:write"})
      */
     private $color;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"science-programs:read", "science-programs:write"})
      */
     private $link;
 

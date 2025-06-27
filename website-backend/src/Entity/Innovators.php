@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InnovatorsRepository::class)
- * normalizationContext={"groups"={"innovators:read"}},
- * denormalizationContext={"groups"={"innovators:write"}}
+ *@ApiResource(
+ *  normalizationContext={"groups"={"innovators:read"}},
+ *  denormalizationContext={"groups"={"innovators:write"}}
+ * )
  */
 class Innovators
 {
@@ -17,46 +19,55 @@ class Innovators
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"innovators:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $company;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $sector;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $innovation;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $impact;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $funding;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $image_url;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"innovators:read", "innovators:write"})
      */
     private $created_at;
 

@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=VacanciesRepository::class)
- * normalizationContext={"groups"={"vacancies:read"}},
- * denormalizationContext={"groups"={"vacancies:write"}}
+ *@ApiResource(
+ *  normalizationContext={"groups"={"vacancies:read"}},
+ *  denormalizationContext={"groups"={"vacancies:write"}}
+ * )
 
  */
 class Vacancies
@@ -20,61 +22,73 @@ class Vacancies
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vacancies:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $department;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $location;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $level;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $closing_date;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $publish_date;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $salary;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $create_at;
 
     /**
      * @ORM\OneToMany(targetEntity=VacancyRequirements::class, mappedBy="vacancy")
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $vacancyRequirements;
 
     /**
      * @ORM\OneToMany(targetEntity=VacancyResponsabilities::class, mappedBy="vacancy")
+     * @Groups({"vacancies:read", "vacancies:write"})
      */
     private $vacancyResponsabilities;
 

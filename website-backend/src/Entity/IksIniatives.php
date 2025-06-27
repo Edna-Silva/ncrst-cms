@@ -11,9 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=IksIniativesRepository::class)
- * normalizationContext={"groups"={"iks-initiatives:read"}},
- * denormalizationContext={"groups"={"iks-initiatives:write"}}
-
+ * @ApiResource(    
+ *  normalizationContext={"groups"={"iks-initiatives:read"}},
+ *  denormalizationContext={"groups"={"iks-initiatives:write"}}
+ * )
  * 
  */
 class IksIniatives
@@ -22,36 +23,43 @@ class IksIniatives
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"iks-initiatives:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $timeline;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $communities;
 
     /**
      * @ORM\OneToMany(targetEntity=IksIniativeOutcomes::class, mappedBy="iks_iniatives")
+     * @Groups({"iks-initiatives:read", "iks-initiatives:write"})
      */
     private $iks_iniative_outcomes;
 

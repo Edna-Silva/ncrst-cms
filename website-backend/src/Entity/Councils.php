@@ -11,8 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CouncilsRepository::class)
- * normalizationContext={"groups"={"councils:read"}},
- * denormalizationContext={"groups"={"councils:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"councils:read"}},
+ *  denormalizationContext={"groups"={"councils:write"}}
+ * )
  */
 class Councils
 {
@@ -20,31 +22,39 @@ class Councils
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"councils:read"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"councils:read", "councils:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"councils:read", "councils:write"})
+     * 
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"councils:read", "councils:write"})
      */
     private $members_count;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"councils:read", "councils:write"})
      */
     private $link;
 
     /**
      * @ORM\OneToMany(targetEntity=CouncilMembers::class, mappedBy="council")
+     * @Groups({"councils:read", "councils:write"})
      */
     private $council_members;
 

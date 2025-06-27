@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=IksKnowledgeAreasRepository::class)
- * normalizationContext={"groups"={"iks-knowledge-areas:read"}},
- * denormalizationContext={"groups"={"iks-knowledge-areas:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"iks-knowledge-areas:read"}},
+ *  denormalizationContext={"groups"={"iks-knowledge-areas:write"}}
+ * )
  */
 class IksKnowledgeAreas
 {
@@ -19,31 +21,37 @@ class IksKnowledgeAreas
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"iks-knowledge-areas:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"iks-knowledge-areas:read", "iks-knowledge-areas:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     *  @Groups({"iks-knowledge-areas:read", "iks-knowledge-areas:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     *  @Groups({"iks-knowledge-areas:read", "iks-knowledge-areas:write"})
      */
     private $icon;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     *  @Groups({"iks-knowledge-areas:read", "iks-knowledge-areas:write"})
      */
     private $color;
 
     /**
      * @ORM\OneToMany(targetEntity=IksKnowledgeAreaExamples::class, mappedBy="iks_knowlegde_area")
+     * @Groups({"iks-knowledge-areas:read", "iks-knowledge-areas:write"})
      */
     private $iks_knowledge_area_examples;
 

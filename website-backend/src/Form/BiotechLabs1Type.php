@@ -15,7 +15,7 @@ class BiotechLabs1Type extends AbstractType
             ->add('name')
             ->add('location')
             ->add('equipment')
-            ->add('cerification')
+            ->add('certification')
         ;
     }
 

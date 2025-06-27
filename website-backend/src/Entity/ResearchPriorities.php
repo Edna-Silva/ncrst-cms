@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ResearchPrioritiesRepository::class)
- * normalizationContext={"groups"={"research-priorities:read"}},
- * denormalizationContext={"groups"={"research-priorities:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"research-priorities:read"}},
+ *  denormalizationContext={"groups"={"research-priorities:write"}}
+ * )
  */
 class ResearchPriorities
 {
@@ -18,11 +20,13 @@ class ResearchPriorities
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"research-priorities:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"research-priorities:read", "research-priorities:write"})
      */
     private $priority;
 

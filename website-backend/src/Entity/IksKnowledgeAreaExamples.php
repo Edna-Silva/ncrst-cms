@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=IksKnowledgeAreaExamplesRepository::class)
- * normalizationContext={"groups"={"iks-knowledge-area-examples:read"}},
- * denormalizationContext={"groups"={"iks-knowledge-area-examples:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"iks-knowledge-area-examples:read"}},
+ *  denormalizationContext={"groups"={"iks-knowledge-area-examples:write"}}
+ * )
  */
 class IksKnowledgeAreaExamples
 {
@@ -17,17 +19,20 @@ class IksKnowledgeAreaExamples
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"iks-knowledge-area-examples:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=IksKnowledgeAreas::class, inversedBy="iks_knowledge_area_examples")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"iks-knowledge-area-examples:read", "iks-knowledge-area-examples:write"})
      */
     private $iks_knowlegde_area;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"iks-knowledge-area-examples:read", "iks-knowledge-area-examples:write"})
      */
     private $example;
 

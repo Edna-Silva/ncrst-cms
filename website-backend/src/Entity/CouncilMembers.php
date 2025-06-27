@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CouncilMembersRepository::class)
- * normalizationContext={"groups"={"council-members:read"}},
- * denormalizationContext={"groups"={"council-members:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"council-members:read"}},
+ *  denormalizationContext={"groups"={"council-members:write"}}
+ * )
  */
 class CouncilMembers
 {

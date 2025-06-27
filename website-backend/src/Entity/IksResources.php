@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=IksResourcesRepository::class)
- * normalizationContext={"groups"={"iks-resources:read"}},
- * denormalizationContext={"groups"={"iks-resources:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"iks-resources:read"}},
+ *  denormalizationContext={"groups"={"iks-resources:write"}}
+ * )
  */
 class IksResources
 {
@@ -17,26 +19,31 @@ class IksResources
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"iks-resources:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"iks-resources:read", "iks-resources:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"iks-resources:read", "iks-resources:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"iks-resources:read", "iks-resources:write"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"iks-resources:read", "iks-resources:write"})
      */
     private $acess;
 

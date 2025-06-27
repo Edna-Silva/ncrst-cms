@@ -10,9 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=EcosystemPartnersRepository::class)
- * normalizationContext={"groups"={"ecosystem-partners:read"}},
- * denormalizationContext={"groups"={"ecosystem-partners:write"}}
- * 
+ * @ApiResource(
+ *  normalizationContext={"groups"={"ecosystem-partners:read"}},
+ *  denormalizationContext={"groups"={"ecosystem-partners:write"}}
+ * )
  */
 class EcosystemPartners
 {
@@ -20,26 +21,33 @@ class EcosystemPartners
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"ecosystem-partners:read"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"ecosystem-partners:read", "ecosystem-partners:write"})
+
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"ecosystem-partners:read", "ecosystem-partners:write"})
      */
     private $partner_count;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"ecosystem-partners:read", "ecosystem-partners:write"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity=EcosystemPartnerExamples::class, mappedBy="ecosystem_partner")
+     * @Groups({"ecosystem-partners:read", "ecosystem-partners:write"})
      */
     private $ecosystem_partner_examples;
 

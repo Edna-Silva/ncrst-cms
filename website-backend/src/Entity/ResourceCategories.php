@@ -11,8 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ResourceCategoriesRepository::class)
- * normalizationContext={"groups"={"resource-categories:read"}},
- * denormalizationContext={"groups"={"resource-categories:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"resource-categories:read"}},
+ *  denormalizationContext={"groups"={"resource-categories:write"}}
+ * )
  */
 class ResourceCategories
 {
@@ -20,16 +22,20 @@ class ResourceCategories
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"resource-categories:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * 
+     * @Groups({"resource-categories:read", "resource-categories:write"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Resources::class, mappedBy="resource_categories")
+     * @Groups({"resource-categories:read", "resource-categories:write"})
      */
     private $resources;
 
