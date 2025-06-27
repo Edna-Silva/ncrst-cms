@@ -9,8 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ResearchGrantsRepository::class)
- * normalizationContext={"groups"={"research-grants:read"}},
- * denormalizationContext={"groups"={"research-grants:write"}}
+ * @ApiResource(
+ *   normalizationContext={"groups"={"research-grants:read"}},
+ *   denormalizationContext={"groups"={"research-grants:write"}}
+ * )
  */
 class ResearchGrants
 {
@@ -18,36 +20,43 @@ class ResearchGrants
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"research-grants:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $deadline;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $amount;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"research-grants:read", "research-grants:write"})
      */
     private $created_at;
 

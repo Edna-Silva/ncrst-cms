@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=NewsCategoriesRepository::class)
- * normalizationContext={"groups"={"news-categories:read"}},
- * denormalizationContext={"groups"={"news-categories:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"news-categories:read"}},
+ *  denormalizationContext={"groups"={"news-categories:write"}}
+ * )
  */
 class NewsCategories
 {
@@ -19,16 +21,19 @@ class NewsCategories
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"news-categories:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"news-categories:read", "news-categories:write"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=NewsArticles::class, mappedBy="category")
+     * @Groups({"news-categories:read", "news-categories:write"})
      */
     private $newsArticles;
 

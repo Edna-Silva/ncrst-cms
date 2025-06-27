@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ResearchPermitsRepository::class)
- * normalizationContext={"groups"={"research-permits:read"}},
- * denormalizationContext={"groups"={"research-permits:write"}}
+ * @ApiResource(
+ *   normalizationContext={"groups"={"research-permits:read"}},
+ *   denormalizationContext={"groups"={"research-permits:write"}}
+ * )
  */
 class ResearchPermits
 {
@@ -17,31 +19,37 @@ class ResearchPermits
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"research-permits:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"research-permits:read", "research-permits:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"research-permits:read", "research-permits:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Groups({"research-permits:read", "research-permits:write"})
      */
     private $file_type;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
+     * @Groups({"research-permits:read", "research-permits:write"})
      */
     private $size;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"research-permits:read", "research-permits:write"})
      */
     private $created_at;
 

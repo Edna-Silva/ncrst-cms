@@ -9,9 +9,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProcurementDocumentsRepository::class)
- * normalizationContext={"groups"={"procurement-documents:read"}},
- * denormalizationContext={"groups"={"procurement-documents:write"}}
-
+ * @ApiResource(
+ *   normalizationContext={"groups"={"procurement-documents:read"}},
+ *   denormalizationContext={"groups"={"procurement-documents:write"}}
+ * )
  */
 class ProcurementDocuments
 {
@@ -19,17 +20,20 @@ class ProcurementDocuments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"procurement-documents:read"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=ProcurementBids::class, inversedBy="procurement_documents")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"procurement-documents:read", "procurement-documents:write"})
      */
     private $procurement_bids;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"procurement-documents:read", "procurement-documents:write"})
      */
     private $document_name;
 

@@ -8,8 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=NewsArticlesRepository::class)
- * normalizationContext={"groups"={"news-articles:read"}},
- * denormalizationContext={"groups"={"news-articles:write"}}
+ * @ApiResource(
+ *  normalizationContext={"groups"={"news-articles:read"}},
+ *  denormalizationContext={"groups"={"news-articles:write"}}
+ * )
  */
 class NewsArticles
 {
@@ -17,47 +19,56 @@ class NewsArticles
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"news-articles:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $excerpt;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=NewsCategories::class, inversedBy="newsArticles")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $read_time;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $image_url;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $featured;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"news-articles:read", "news-articles:write"})
      */
     private $created_at;
 

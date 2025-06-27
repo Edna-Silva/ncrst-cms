@@ -10,8 +10,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ProcurementBidsRepository::class)
- * normalizationContext={"groups"={"procurement-bids:read"}},
- * denormalizationContext={"groups"={"procurement-bids:write"}}
+ * @ApiResource(
+ *   normalizationContext={"groups"={"procurement-bids:read"}},
+ *   denormalizationContext={"groups"={"procurement-bids:write"}}
+ * )
  */
 class ProcurementBids
 {
@@ -19,81 +21,97 @@ class ProcurementBids
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"procurement-bids:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $reference;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $value;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $closing_date;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $publish_date;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $is_awarded;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $vendor;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $awarded_value;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $awarded_date;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $contract_period;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $created_at;
 
     /**
      * @ORM\OneToMany(targetEntity=ProcurementDocuments::class, mappedBy="procurement_bids")
+     * @Groups({"procurement-bids:read", "procurement-bids:write"})
      */
     private $procurement_documents;
 
