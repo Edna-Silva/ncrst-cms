@@ -49,7 +49,7 @@ class BiotechLabs
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"biotech_labs:read", "biotech_labs:write"})
      */
-    private $cerification;
+    private $certification;
 
     /**
      * @ORM\OneToMany(targetEntity=BiotechLabServices::class, mappedBy="biotech_labs")
