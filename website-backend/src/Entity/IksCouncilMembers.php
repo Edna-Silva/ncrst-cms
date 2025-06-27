@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\IksCouncilMembersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=IksCouncilMembersRepository::class)
+ * normalizationContext={"groups"={"iks-council-members:read"}},
+ * denormalizationContext={"groups"={"iks-council-members:write"}}
  */
 class IksCouncilMembers
 {

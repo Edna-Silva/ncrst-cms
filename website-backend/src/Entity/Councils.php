@@ -6,9 +6,13 @@ use App\Repository\CouncilsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CouncilsRepository::class)
+ * normalizationContext={"groups"={"councils:read"}},
+ * denormalizationContext={"groups"={"councils:write"}}
  */
 class Councils
 {

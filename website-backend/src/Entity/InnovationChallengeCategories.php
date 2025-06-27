@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\InnovationChallengeCategoriesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InnovationChallengeCategoriesRepository::class)
+ * normalizationContext={"groups"={"innovation-challenge-categories:read"}},
+ * denormalizationContext={"groups"={"innovation-challenge-categories:write"}}
  */
 class InnovationChallengeCategories
 {

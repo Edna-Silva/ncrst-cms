@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ResearchPrioritiesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ResearchPrioritiesRepository::class)
+ * normalizationContext={"groups"={"research-priorities:read"}},
+ * denormalizationContext={"groups"={"research-priorities:write"}}
  */
 class ResearchPriorities
 {

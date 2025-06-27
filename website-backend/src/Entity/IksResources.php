@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\IksResourcesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=IksResourcesRepository::class)
+ * normalizationContext={"groups"={"iks-resources:read"}},
+ * denormalizationContext={"groups"={"iks-resources:write"}}
  */
 class IksResources
 {

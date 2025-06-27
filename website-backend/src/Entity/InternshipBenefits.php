@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\InternshipBenefitsRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InternshipBenefitsRepository::class)
+ * normalizationContext={"groups"={"internship-benefits:read"}},
+ * denormalizationContext={"groups"={"internship-benefits:write"}}
  */
 class InternshipBenefits
 {

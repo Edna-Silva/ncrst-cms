@@ -4,9 +4,15 @@ namespace App\Entity;
 
 use App\Repository\ContactDepartmentsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ContactDepartmentsRepository::class)
+ * @ApiResource(
+ *     normalizationContext={"groups"={"contact_departments:read"}},
+ *     denormalizationContext={"groups"={"contact_departments:write"}}
+ * )
  */
 class ContactDepartments
 {
@@ -14,26 +20,36 @@ class ContactDepartments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"contact_departments:read"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"contact_departments:read", "contact_departments:write"})
+
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"contact_departments:read", "contact_departments:write"})
+
      */
     private $contact;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"contact_departments:read", "contact_departments:write"})
+
      */
     private $phone;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"contact_departments:read", "contact_departments:write"})
+
      */
     private $description;
 

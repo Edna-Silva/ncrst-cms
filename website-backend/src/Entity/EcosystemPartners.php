@@ -6,9 +6,13 @@ use App\Repository\EcosystemPartnersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=EcosystemPartnersRepository::class)
+ * normalizationContext={"groups"={"ecosystem-partners:read"}},
+ * denormalizationContext={"groups"={"ecosystem-partners:write"}}
+ * 
  */
 class EcosystemPartners
 {

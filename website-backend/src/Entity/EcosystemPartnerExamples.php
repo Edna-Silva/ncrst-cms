@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\EcosystemPartnerExamplesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=EcosystemPartnerExamplesRepository::class)
+ * normalizationContext={"groups"={"ecosystem-partner-examples:read"}},
+ * denormalizationContext={"groups"={"ecosystem-partner-examples:write"}}
+ * 
  */
 class EcosystemPartnerExamples
 {

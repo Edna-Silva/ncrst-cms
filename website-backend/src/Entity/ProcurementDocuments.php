@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ProcurementDocumentsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProcurementDocumentsRepository::class)
+ * normalizationContext={"groups"={"procurement-documents:read"}},
+ * denormalizationContext={"groups"={"procurement-documents:write"}}
+
  */
 class ProcurementDocuments
 {

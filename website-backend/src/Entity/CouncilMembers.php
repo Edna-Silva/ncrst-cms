@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\CouncilMembersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CouncilMembersRepository::class)
+ * normalizationContext={"groups"={"council-members:read"}},
+ * denormalizationContext={"groups"={"council-members:write"}}
  */
 class CouncilMembers
 {
@@ -14,37 +18,47 @@ class CouncilMembers
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"council-members:read"})
+
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Councils::class, inversedBy="council_members")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"council-members:read", "council-members:write"})
+
      */
     private $council;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Groups({"council-members:read", "council-members:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups({"council-members:read", "council-members:write"})
      */
     private $role;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"council-members:read", "council-members:write"})
      */
     private $expertise;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"council-members:read", "council-members:write"})
      */
     private $institution;
 
     /**
+     * 
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"council-members:read", "council-members:write"})
      */
     private $community;
 

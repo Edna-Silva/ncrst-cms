@@ -6,9 +6,12 @@ use App\Repository\ProcurementBidsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ProcurementBidsRepository::class)
+ * normalizationContext={"groups"={"procurement-bids:read"}},
+ * denormalizationContext={"groups"={"procurement-bids:write"}}
  */
 class ProcurementBids
 {
